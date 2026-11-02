@@ -12,17 +12,20 @@ import {
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { Request, Response } from 'express';
 
-import { AuthService } from './auth.service';
-import { RegisterDto } from './dto/register.dto';
-import { LoginDto } from './dto/login.dto';
-import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
-import { CurrentUser } from '../../common/decorators/current-user.decorator';
+import { AuthService } from '@/modules/auth/auth.service';
+import { RegisterDto } from '@/modules/auth/dto/register.dto';
+import { LoginDto } from '@/modules/auth/dto/login.dto';
+import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
+import { CurrentUser } from '@/common/decorators/current-user.decorator';
 
 @ApiTags('Auth')
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  /**
+   * Handles customer account registration, issues tokens, and sets refresh token cookie.
+   */
   @Post('register')
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Register a new customer account' })
@@ -41,6 +44,9 @@ export class AuthController {
     };
   }
 
+  /**
+   * Authenticates user with email and password, returning access token and setting refresh cookie.
+   */
   @Post('login')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Authenticate user and issue tokens' })
@@ -59,6 +65,9 @@ export class AuthController {
     };
   }
 
+  /**
+   * Refreshes access token and rotates refresh token using HttpOnly cookie or request body.
+   */
   @Post('refresh')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Rotate and refresh access token via refresh token cookie' })
@@ -79,6 +88,9 @@ export class AuthController {
     };
   }
 
+  /**
+   * Logs out user by clearing the HttpOnly refresh token cookie on client browser.
+   */
   @Post('logout')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Log out user and clear refresh token cookie' })
@@ -94,6 +106,9 @@ export class AuthController {
     return { message: 'Logged out successfully' };
   }
 
+  /**
+   * Returns current authenticated user profile extracted from validated JWT payload.
+   */
   @Get('me')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
@@ -105,7 +120,10 @@ export class AuthController {
     return { user };
   }
 
-  private setRefreshTokenCookie(res: Response, refreshToken: string) {
+  /**
+   * Sets the refresh token into an HttpOnly, secure cookie on the response.
+   */
+  private setRefreshTokenCookie(res: Response, refreshToken: string): void {
     const isProduction = process.env.NODE_ENV === 'production';
     const sevenDaysInMs = 7 * 24 * 60 * 60 * 1000;
 

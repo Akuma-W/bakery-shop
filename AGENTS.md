@@ -48,13 +48,30 @@ Mỗi file báo cáo phải tuân thủ đúng cấu trúc chuẩn tại [TEMPLA
 
 ---
 
-## 3. Quy trình Thực thi (Workflow)
+## 3. Quy trình Thực thi & Phê duyệt Bắt buộc (Mandatory Review & Commit Workflow)
 
-1. Kiểm tra hiện trạng trước khi sửa file.
-2. Nêu rõ kế hoạch trước khi thực hiện các thay đổi lớn.
-3. Chạy lệnh kiểm tra thực tế (typecheck, lint, test, build).
-4. Tạo file báo cáo task tại `docs/reports/milestone-<XX>/task-<X>.<Y>-<name>.md`.
-5. Báo cáo kết quả và dẫn link file báo cáo cho người dùng.
+> [!IMPORTANT]
+> **Tuyệt đối không tự ý commit code trước khi người dùng review và phê duyệt.**
+
+Mọi task code bắt buộc phải tuân thủ nghiêm ngặt chu trình 3 bước sau:
+
+1. **Bước 1: Trình Kế hoạch & Chờ Duyệt (Pre-Implementation Review)**:
+   - Trước khi sửa hoặc viết bất kỳ dòng code nào, Agent phải trình bày:
+     - Những gì sẽ làm / sửa đổi.
+     - Kỹ thuật / giải pháp kiến trúc sẽ áp dụng.
+     - Danh sách file tương ứng sẽ tác động.
+   - **Bắt buộc chờ người dùng duyệt kế hoạch** mới được bắt đầu viết code.
+
+2. **Bước 2: Viết Code & Yêu cầu Người dùng Kiểm tra (Post-Implementation Review)**:
+   - Sau khi được duyệt, tiến hành viết code theo đúng kế hoạch.
+   - Chạy các lệnh kiểm tra thực tế (typecheck, lint, test, build).
+   - Lập báo cáo nghiệm thu task tại `docs/reports/milestone-<XX>/task-<X>.<Y>-<name>.md`.
+   - Báo cáo kết quả và **yêu cầu người dùng kiểm tra, review code**.
+   - **TUYỆT ĐỐI KHÔNG commit code tại bước này.**
+
+3. **Bước 3: Commit sau khi Người dùng Đồng ý (Commit & Handover)**:
+   - CHỈ KHI người dùng phản hồi đồng ý/phê duyệt code, Agent mới được phép chạy lệnh commit code lên Git.
+   - Sau khi commit thành công, mới tiến hành bước tiếp theo.
 
 ---
 
@@ -63,3 +80,7 @@ Mỗi file báo cáo phải tuân thủ đúng cấu trúc chuẩn tại [TEMPLA
 - **Comments & Logging**: Toàn bộ chú thích (comments), docstrings và console log / logger trong code (TypeScript, JavaScript, SQL...) **BẮT BUỘC sử dụng 100% tiếng Anh**.
 - **Không dùng Icon / Emoji trong Code**: Tuyệt đối **không sử dụng bất kỳ icon hoặc emoji nào** (ví dụ: 🌱, ✅, ❌, 🎉, 🚀...) trong source code, comments, log messages hay console output. Log phải thuần text chuyên nghiệp.
 - **Tiếng Việt chỉ dùng trong Markdown**: Tiếng Việt CHỈ ĐƯỢC PHÉP sử dụng trong các tài liệu Markdown (`docs/`, `*.md`, file báo cáo) và khi trao đổi trực tiếp với người dùng.
+- **Comment cho mọi hàm**: Mỗi hàm/method được tạo ra **bắt buộc phải có comment ngắn gọn (bằng tiếng Anh)** đặt ngay phía trên để giải thích mục đích của hàm (chuẩn JSDoc / TSDoc).
+- **Import Alias `@/*`**: Luôn sử dụng path alias `@/*` (ví dụ `@/common/...`, `@/database/...`, `@/modules/...`) thay vì các đường dẫn tương đối như `../../`.
+- **Tách biệt Type/Interface**: Không định nghĩa trực tiếp các interface/type phức tạp bên trong service/controller. Bắt buộc tách thành thư mục riêng `interfaces/` bên trong mỗi module (ví dụ: `src/modules/<module-name>/interfaces/`).
+- **Definite Assignment trong DTO**: Khi khai báo thuộc tính trong DTO class, luôn dùng dấu `!` (ví dụ: `email!: string;`, `password!: string;`) để tương thích với TypeScript strict mode.

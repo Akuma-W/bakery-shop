@@ -5,8 +5,8 @@ import { ConfigService } from '@nestjs/config';
 import { Role } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 
-import { AuthService } from './auth.service';
-import { PrismaService } from '../../database/prisma.service';
+import { AuthService } from '@/modules/auth/auth.service';
+import { PrismaService } from '@/database/prisma.service';
 
 describe('AuthService', () => {
   let service: AuthService;

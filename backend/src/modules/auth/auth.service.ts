@@ -9,30 +9,14 @@ import { ConfigService } from '@nestjs/config';
 import { Role } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 
-import { PrismaService } from '../../database/prisma.service';
-import { RegisterDto } from './dto/register.dto';
-import { LoginDto } from './dto/login.dto';
-
-export interface UserResponse {
-  id: string;
-  email: string;
-  fullName: string;
-  phone: string | null;
-  role: Role;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-export interface AuthTokens {
-  accessToken: string;
-  refreshToken: string;
-}
-
-export interface AuthResponse {
-  user: UserResponse;
-  accessToken: string;
-  refreshToken: string;
-}
+import { PrismaService } from '@/database/prisma.service';
+import { RegisterDto } from '@/modules/auth/dto/register.dto';
+import { LoginDto } from '@/modules/auth/dto/login.dto';
+import {
+  UserResponse,
+  AuthTokens,
+  AuthResponse,
+} from '@/modules/auth/interfaces';
 
 @Injectable()
 export class AuthService {
@@ -45,6 +29,9 @@ export class AuthService {
     private readonly configService: ConfigService,
   ) {}
 
+  /**
+   * Registers a new customer user with bcrypt hashed password and issues auth tokens.
+   */
   async register(dto: RegisterDto): Promise<AuthResponse> {
     const normalizedEmail = dto.email.toLowerCase().trim();
 
@@ -82,6 +69,9 @@ export class AuthService {
     };
   }
 
+  /**
+   * Validates user credentials and issues a new pair of access and refresh tokens.
+   */
   async login(dto: LoginDto): Promise<AuthResponse> {
     const normalizedEmail = dto.email.toLowerCase().trim();
 
@@ -112,6 +102,9 @@ export class AuthService {
     };
   }
 
+  /**
+   * Verifies an existing refresh token and rotates it with a newly signed token pair.
+   */
   async refreshTokens(refreshToken: string): Promise<AuthResponse> {
     if (!refreshToken) {
       throw new UnauthorizedException('Refresh token is required');
@@ -149,6 +142,9 @@ export class AuthService {
     }
   }
 
+  /**
+   * Retrieves profile details for a given user ID without sensitive password fields.
+   */
   async getCurrentUser(userId: string): Promise<UserResponse> {
     const user = await this.prisma.user.findUnique({
       where: { id: userId },
@@ -161,6 +157,9 @@ export class AuthService {
     return this.sanitizeUser(user);
   }
 
+  /**
+   * Generates signed JWT access and refresh token pair for a user.
+   */
   private async generateTokens(user: {
     id: string;
     email: string;
@@ -196,6 +195,9 @@ export class AuthService {
     };
   }
 
+  /**
+   * Strips sensitive credentials such as passwordHash before returning user object.
+   */
   private sanitizeUser(user: any): UserResponse {
     const { passwordHash: _hash, ...sanitized } = user;
     return sanitized;

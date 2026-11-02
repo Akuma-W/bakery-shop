@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../../database/prisma.service';
+import { PrismaService } from '@/database/prisma.service';
 
 export interface HealthCheckResult {
   status: 'ok' | 'error';
@@ -21,6 +21,9 @@ export interface HealthCheckResult {
 export class HealthService {
   constructor(private readonly prisma: PrismaService) {}
 
+  /**
+   * Performs system health check by inspecting API process uptime and PostgreSQL ping response.
+   */
   async check(): Promise<HealthCheckResult> {
     const isDbHealthy = await this.prisma.isHealthy();
 

@@ -8,6 +8,9 @@ import { HealthService } from './health.service';
 export class HealthController {
   constructor(private readonly healthService: HealthService) {}
 
+  /**
+   * Endpoint to verify server and database connectivity health status.
+   */
   @Get()
   @ApiOperation({ summary: 'Check health status of API and Database' })
   @ApiResponse({

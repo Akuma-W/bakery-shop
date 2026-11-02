@@ -17,6 +17,9 @@ const pool = new Pool({ connectionString });
 const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
 
+/**
+ * Seeds initial database records including owner, customer, categories, products, and coupons.
+ */
 async function main() {
   console.log('Starting database seeding...');
 

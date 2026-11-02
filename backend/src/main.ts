@@ -1,10 +1,14 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe, Logger } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import * as cookieParser from 'cookie-parser';
-import { AppModule } from './app.module';
-import { HttpExceptionFilter } from './common/filters/http-exception.filter';
+import cookieParser from 'cookie-parser';
 
+import { AppModule } from '@/app.module';
+import { HttpExceptionFilter } from '@/common/filters/http-exception.filter';
+
+/**
+ * Bootstraps and starts the NestJS HTTP REST API server.
+ */
 async function bootstrap() {
   const logger = new Logger('Bootstrap');
   const app = await NestFactory.create(AppModule);
@@ -44,6 +48,7 @@ async function bootstrap() {
     )
     .setVersion('1.0.0')
     .addTag('Health', 'Health check endpoints')
+    .addTag('Auth', 'Authentication and authorization endpoints')
     .addBearerAuth()
     .build();
 

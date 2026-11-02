@@ -1,7 +1,7 @@
 # Báo cáo Hoàn thành Task: Task 3.1 — Xây dựng Module Xác thực (Auth Module) & Băm Mật khẩu An toàn
 
 > **Milestone**: Milestone 03: Module Xác thực (Auth) & Quản lý Người dùng  
-> **Thời gian hoàn thành**: 2026-11-03 02:06:40 (GMT+7)  
+> **Thời gian cập nhật**: 2026-11-03 02:42:33 (GMT+7)  
 > **Trạng thái**: ✅ HOÀN THÀNH  
 > **Người thực hiện**: AI Coding Assistant / Tech Lead  
 
@@ -14,7 +14,13 @@
 - Triển khai cơ chế Dual Token: Access Token (15 phút) cấp qua header và Refresh Token (7 ngày) lưu trong **HttpOnly, Secure Cookie**.
 - Triển khai API Xoay vòng Refresh Token (`POST /api/v1/auth/refresh`) và Đăng xuất (`POST /api/v1/auth/logout`) xóa cookie.
 - Triển khai API Lấy thông tin tài khoản hiện tại (`GET /api/v1/auth/me`) bảo vệ bởi `JwtAuthGuard`.
-- Tuân thủ 100% quy tắc: Comments và logs bằng tiếng Anh, không icon/emoji trong mã nguồn.
+- Áp dụng các quy tắc clean code theo yêu cầu:
+  - Dùng dấu `!` definite assignment cho các trường DTO class (`email!: string;`).
+  - Dùng path alias `@/*` cho toàn bộ các imports thay vì `../../`.
+  - Tách các interface/types thành thư mục riêng `backend/src/modules/auth/interfaces/`.
+  - Cấu hình `"types": ["jest", "node"]` trong `tsconfig.json` để IDE nhận diện đầy đủ cú pháp Jest (`describe`, `it`, `expect`).
+  - Mỗi hàm/method đều có comment JSDoc bằng tiếng Anh giải thích ngắn gọn mục đích.
+  - 100% comments và logs bằng tiếng Anh, không icon/emoji trong mã nguồn.
 
 ---
 
@@ -22,38 +28,46 @@
 
 | Loại thao tác | Đường dẫn File | Mục đích |
 | :--- | :--- | :--- |
-| `Tạo mới` | `backend/src/common/decorators/current-user.decorator.ts` | Custom decorator `@CurrentUser()` trích xuất user từ request |
-| `Tạo mới` | `backend/src/common/decorators/roles.decorator.ts` | Custom decorator `@Roles(Role.OWNER)` gán metadata quyền hạn |
-| `Tạo mới` | `backend/src/common/guards/jwt-auth.guard.ts` | Guard xác thực Access Token JWT từ header hoặc cookie |
-| `Tạo mới` | `backend/src/common/guards/roles.guard.ts` | Guard kiểm tra vai trò người dùng (RBAC) |
-| `Tạo mới` | `backend/src/modules/auth/dto/register.dto.ts` | DTO validate email, password (min 8 chars), fullName, phone VN |
-| `Tạo mới` | `backend/src/modules/auth/dto/login.dto.ts` | DTO validate email và password đăng nhập |
-| `Tạo mới` | `backend/src/modules/auth/strategies/jwt.strategy.ts` | Passport Strategy giải mã và kiểm tra JWT token |
-| `Tạo mới` | `backend/src/modules/auth/auth.service.ts` | Logic băm bcrypt, tạo JWT, xác thực, xoay vòng token |
-| `Tạo mới` | `backend/src/modules/auth/auth.controller.ts` | Controller quản trị các endpoints `/auth/*` và quản lý cookie |
-| `Tạo mới` | `backend/src/modules/auth/auth.module.ts` | Đăng ký Passport, JwtModule và xuất AuthService |
-| `Tạo mới` | `backend/src/modules/auth/auth.service.spec.ts` | Unit tests kiểm thử đầy đủ các kịch bản của AuthService |
-| `Cập nhật` | `backend/src/main.ts` | Đăng ký middleware `cookieParser()` đọc cookie từ client |
-| `Cập nhật` | `backend/src/app.module.ts` | Đăng ký nạp `AuthModule` vào hệ thống NestJS |
-| `Cập nhật` | `backend/package.json` | Cài đặt `@nestjs/jwt`, `@nestjs/passport`, `passport-jwt`, `cookie-parser` |
+| `Tạo mới` | `backend/src/modules/auth/interfaces/auth.interface.ts` | Tách riêng các interfaces `UserResponse`, `AuthTokens`, `AuthResponse`, `JwtPayload` |
+| `Tạo mới` | `backend/src/modules/auth/interfaces/index.ts` | Barrel export cho toàn bộ interfaces của Auth module |
+| `Cập nhật` | `backend/src/modules/auth/dto/login.dto.ts` | Bổ sung `!` definite assignment cho `email!` và `password!` |
+| `Cập nhật` | `backend/src/modules/auth/dto/register.dto.ts` | Bổ sung `!` definite assignment cho `email!`, `password!`, `fullName!` |
+| `Cập nhật` | `backend/src/modules/auth/auth.service.ts` | Chuyển import sang `@/*`, dùng interfaces riêng, bổ sung JSDoc comment cho từng hàm |
+| `Cập nhật` | `backend/src/modules/auth/auth.controller.ts` | Chuyển import sang `@/*`, bổ sung JSDoc comment cho từng endpoint |
+| `Cập nhật` | `backend/src/modules/auth/strategies/jwt.strategy.ts` | Chuyển import sang `@/*`, bổ sung comment giải thích validate |
+| `Cập nhật` | `backend/src/modules/auth/auth.service.spec.ts` | Chuyển import sang `@/*`, kiểm thử 13 kịch bản test |
+| `Cập nhật` | `backend/tsconfig.json` | Bổ sung `"types": ["jest", "node"]` giúp IDE nhận diện globals của Jest |
+| `Cập nhật` | `backend/package.json` | Cấu hình `moduleNameMapper` để Jest phân giải `@/*` sang `<rootDir>/$1` |
+| `Cập nhật` | `backend/test/jest-e2e.json` | Cấu hình `moduleNameMapper` cho các bài test E2E |
+| `Cập nhật` | `AGENTS.md` & `docs/AI_WORKFLOW.md` | Ghi nhận các quy tắc: Comment hàm tiếng Anh, import `@/*`, tách folder `interfaces/`, DTO definite assignment |
 
 ---
 
 ## 3. Chi tiết Triển khai Kỹ thuật (Technical Implementation)
 
-1. **Bảo mật Mật khẩu**:
-   - Dùng `bcrypt.hash(password, 12)` khi đăng ký và `bcrypt.compare()` khi đăng nhập.
-   - Hàm `sanitizeUser()` đảm bảo trường `passwordHash` bị loại bỏ hoàn toàn trước khi trả dữ liệu về phía client.
-2. **Cơ chế Dual-Token & Lưu trữ Cookie**:
-   - Access Token: Ký bằng `JWT_ACCESS_SECRET`, thời hạn 15 phút, chứa `{ sub, email, role }`.
-   - Refresh Token: Ký bằng `JWT_REFRESH_SECRET`, thời hạn 7 ngày, đặt trong cookie với các cờ bảo vệ:
-     - `httpOnly: true` (chống XSS script đọc trộm).
-     - `secure: process.env.NODE_ENV === 'production'`.
-     - `sameSite: 'lax'`.
-     - `path: '/api/v1/auth'`.
-3. **Validation & Regex**:
-   - Kiểm tra số điện thoại Việt Nam hợp lệ: `/(84|0[3|5|7|8|9])+([0-9]{8})\b/`.
-   - Mật khẩu tối thiểu 8 ký tự.
+1. **Khắc phục lỗi DTO Property Initialization**:
+   - Sử dụng definite assignment assertion `!` theo chuẩn TypeScript và NestJS:
+     ```typescript
+     export class LoginDto {
+       @ApiProperty()
+       @IsEmail()
+       email!: string;
+
+       @ApiProperty()
+       @IsString()
+       password!: string;
+     }
+     ```
+2. **Cấu hình Path Alias `@/*` & Jest Resolver**:
+   - `tsconfig.json`: `"paths": { "@/*": ["src/*"] }`
+   - `package.json#jest`: `"moduleNameMapper": { "^@/(.*)$": "<rootDir>/$1" }`
+   - Toàn bộ imports trong ứng dụng đồng nhất sử dụng `@/common/...`, `@/database/...`, `@/modules/...`.
+3. **Cấu hình Nhận diện Type Runner Jest**:
+   - Thêm `"types": ["jest", "node"]` vào `tsconfig.json` giúp VS Code và TypeScript Language Server nhận diện `describe`, `it`, `expect` mà không cần import thủ công.
+4. **Tách biệt Thư mục Interfaces**:
+   - Module `auth` có thư mục `interfaces/` riêng biệt, không khai báo trực tiếp type trong service.
+5. **JSDoc Comment cho Mọi Hàm**:
+   - Mỗi hàm đều có comment ngắn gọn bằng tiếng Anh giải thích rõ ràng vai trò và mục đích.
 
 ---
 
@@ -75,13 +89,13 @@
 > bakery-api@1.0.0 test
 > jest
 
-PASS src/modules/health/health.controller.spec.ts (10.389 s)
-PASS src/modules/auth/auth.service.spec.ts (16.515 s)
+PASS src/modules/health/health.controller.spec.ts (8.953 s)
+PASS src/modules/auth/auth.service.spec.ts (9.262 s)
 
 Test Suites: 2 passed, 2 total
 Tests:       13 passed, 13 total
 Snapshots:   0 total
-Time:        18.737 s
+Time:        11.156 s
 Ran all test suites.
 ```
 
@@ -97,16 +111,10 @@ Ran all test suites.
 ---
 
 ## 5. Đánh giá Tiêu chí Nghiệm thu
-- [x] Đăng ký tài khoản khách hàng thành công, tự động mã hóa mật khẩu bcrypt 12 rounds.
-- [x] Từ chối đăng ký nếu email đã tồn tại (`ConflictException` - HTTP 409).
-- [x] Đăng nhập thành công trả về User info (đã lược bỏ `passwordHash`) và Access Token.
-- [x] Đăng nhập sai email/mật khẩu trả về mã HTTP 401 Unauthorized (`AUTH_INVALID_CREDENTIALS`).
-- [x] Refresh Token được cấu hình lưu an toàn trong HttpOnly Cookie.
-- [x] Endpoint `GET /api/v1/auth/me` được bảo vệ bằng `JwtAuthGuard`.
-- [x] 100% mã nguồn tuân thủ: Comments và logging bằng tiếng Anh, không icon.
-
----
-
-## 6. Rủi ro & Bàn giao Bước Tiếp theo
-- **Trạng thái**: Task 3.1 đã hoàn thành và sẵn sàng cho môi trường phát triển.
-- **Task tiếp theo**: **Task 3.2 — Refresh Token Rotation & Phân quyền RBAC Guard** (viết unit test chuyên sâu cho `RolesGuard` và hoàn thiện kiểm thử phân quyền route quản trị tiệm bánh).
+- [x] Lỗi TS2564 tại `login.dto.ts` và `register.dto.ts` đã được giải quyết hoàn toàn bằng `!`.
+- [x] Không còn lỗi `Cannot find name 'describe'` trên editor nhờ bổ sung `"types": ["jest", "node"]`.
+- [x] Toàn bộ imports chuyển sang `@/*` sạch sẽ, Jest chạy trơn tru với `moduleNameMapper`.
+- [x] Tách rời các interface/type vào thư mục `interfaces/` riêng.
+- [x] Mỗi hàm đều có comment tiếng Anh giải thích mục đích.
+- [x] 100% test suites pass, build pass.
+- [x] Cập nhật quy tắc mới vào `AGENTS.md` và `docs/AI_WORKFLOW.md`.
