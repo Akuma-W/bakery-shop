@@ -26,9 +26,9 @@ Mục tiêu chính:
 
 | Persona | Vai trò | Mục tiêu & Hành vi chính |
 | :--- | :--- | :--- |
-| **Khách vãng lai (Guest)** | Người dùng chưa đăng nhập | - Xem danh mục bánh, tìm kiếm, lọc theo giá/loại bánh.<br>- Xem chi tiết bánh, thành phần, cảnh báo dị ứng.<br>- Thêm bánh vào giỏ hàng tạm thời.<br>- Chuyển hướng đăng nhập/đăng ký khi bắt đầu Checkout. |
-| **Khách hàng (Customer)** | Khách hàng có tài khoản | - Đăng ký, đăng nhập an toàn.<br>- Lưu trữ và quản lý sổ địa chỉ giao hàng.<br>- Chọn hình thức nhận bánh: **Giao hàng tận nơi** hoặc **Nhận tại cửa hàng**.<br>- Chọn khung giờ nhận bánh (Pickup slot / Delivery time).<br>- Nhập mã giảm giá (Coupon).<br>- Thanh toán COD hoặc quét mã VietQR qua **PayOS Sandbox**.<br>- **Nhận thông báo hệ thống**: Xác nhận đặt đơn thành công, cập nhật từng bước làm/giao bánh.<br>- Xem lịch sử đơn hàng và theo dõi tiến độ đơn. |
-| **Chủ cửa hàng (Store Owner / Admin)** | Người vận hành tiệm | - Quản lý danh mục bánh, đồ uống, phụ kiện.<br>- Cập nhật nhanh trạng thái Còn hàng / Hết hàng (Toggle In-Stock).<br>- Tạo và quản lý mã giảm giá (Coupon).<br>- **Nhận thông báo hệ thống có âm thanh chuông báo (Audio Alert) khi có đơn mới**.<br>- Tiếp nhận đơn hàng mới, cập nhật trạng thái đơn (Xác nhận -> Đang làm bánh -> Sẵn sàng -> Hoàn tất/Đã hủy).<br>- Xem thống kê doanh thu và đơn hàng cơ bản. |
+| **Khách vãng lai (Guest)** | Người dùng chưa đăng nhập | - Xem danh mục bánh, tìm kiếm, lọc theo giá/loại bánh.</br>- Xem chi tiết bánh, thành phần, cảnh báo dị ứng.</br>- Thêm bánh vào giỏ hàng tạm thời.</br>- Chuyển hướng đăng nhập/đăng ký khi bắt đầu Checkout. |
+| **Khách hàng (Customer)** | Khách hàng có tài khoản | - Đăng ký, đăng nhập an toàn.</br>- Lưu trữ và quản lý sổ địa chỉ giao hàng.</br>- Chọn hình thức nhận bánh: **Giao hàng tận nơi** hoặc **Nhận tại cửa hàng**.</br>- Chọn khung giờ nhận bánh (Pickup slot / Delivery time).</br>- Nhập mã giảm giá (Coupon).</br>- Thanh toán COD hoặc quét mã VietQR qua **PayOS Sandbox**.</br>- **Nhận thông báo hệ thống**: Xác nhận đặt đơn thành công, cập nhật từng bước làm/giao bánh.</br>- Xem lịch sử đơn hàng và theo dõi tiến độ đơn. |
+| **Chủ cửa hàng (Store Owner / Admin)** | Người vận hành tiệm | - Quản lý danh mục bánh, đồ uống, phụ kiện.</br>- Cập nhật nhanh trạng thái Còn hàng / Hết hàng (Toggle In-Stock).</br>- Tạo và quản lý mã giảm giá (Coupon).</br>- **Nhận thông báo hệ thống có âm thanh chuông báo (Audio Alert) khi có đơn mới**.</br>- Tiếp nhận đơn hàng mới, cập nhật trạng thái đơn (Xác nhận -> Đang làm bánh -> Sẵn sàng -> Hoàn tất/Đã hủy).</br>- Xem thống kê doanh thu và đơn hàng cơ bản. |
 
 ---
 
@@ -156,7 +156,7 @@ Hệ thống cung cấp chuông thông báo (Notification Center) và biểu tư
 
 ## 4. Vòng đời Đơn hàng & Thanh toán (State Machine)
 
-```
+```text
 [ PENDING_PAYMENT ] ──(PayOS Webhook thành công / Đơn COD)──> [ CONFIRMED ]
          │                                                            │
          │ (Hết hạn 15p / Khách hủy)                                  │ (Tiệm bấm: Bắt đầu làm bánh)
