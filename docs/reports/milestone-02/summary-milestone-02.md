@@ -49,3 +49,4 @@ Milestone 2 đã hoàn thành toàn bộ các yêu cầu thiết kế dữ liệ
   - **Task 3.1**: Xây dựng API Đăng ký (`/auth/register`), Đăng nhập (`/auth/login`) với JWT Token (Access Token 15 phút, Refresh Token 7 ngày đặt trong HttpOnly Cookie).
   - **Task 3.2**: Xây dựng cơ chế Refresh Token Rotation và RBAC Guard (`RolesGuard`) phân quyền `Role.OWNER` vs `Role.CUSTOMER`.
   - **Task 3.3**: Xây dựng API Quản lý Sổ địa chỉ giao hàng (`AddressBook`: thêm, sửa, xóa, chọn mặc định).
+

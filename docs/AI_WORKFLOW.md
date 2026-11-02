@@ -40,6 +40,7 @@ Package manager: npm workspaces unless the repository has an approved alternativ
 - Do not store raw card or banking credentials.
 - Do not put secrets in source code or browser bundles.
 - Add tests for important business rules and authorization.
+- Write code comments, docstrings, and log messages in English only. Do not use any icons or emojis in code or logs. Vietnamese is strictly reserved for Markdown documentation and user communications.
 
 ## Git rules
 
