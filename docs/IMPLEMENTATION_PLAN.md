@@ -133,17 +133,19 @@ gantt
 
 ### MILESTONE 2: Cơ sở Dữ liệu, Prisma Schema & Bảng Notification
 
-#### Task 2.1: Cấu hình Prisma Schema trong `backend/`
+#### Task 2.1: Cấu hình Prisma 7 Schema & `prisma.config.ts` trong `backend/`
 
-- **Mục tiêu**: Định nghĩa toàn bộ cấu trúc bảng cơ sở dữ liệu quan hệ PostgreSQL trong `backend/prisma/schema.prisma` bao gồm bảng `Notification`.
+- **Mục tiêu**: Định nghĩa toàn bộ cấu trúc bảng cơ sở dữ liệu quan hệ PostgreSQL theo chuẩn Prisma 7, cấu hình `prisma.config.ts` và sử dụng Driver Adapter `@prisma/adapter-pg`.
 - **File liên quan**:
   - `backend/prisma/schema.prisma`
+  - `backend/prisma.config.ts`
   - `backend/src/database/prisma.service.ts`
   - `backend/src/database/prisma.module.ts`
 - **Kế hoạch thực hiện**:
   1. Định nghĩa các Model: `User`, `Address`, `Category`, `Product`, `Coupon`, `CouponUsage`, `Order`, `OrderItem`, `PaymentTransaction`, và `Notification`.
-  2. Tạo service kết nối `PrismaService` xử lý lifecycle kết nối và ngắt kết nối an toàn.
-  3. Đăng ký `PrismaModule` là `@Global()` trong NestJS.
+  2. Cấu hình `prisma.config.ts` quản lý URL kết nối và migration.
+  3. Tạo service kết nối `PrismaService` khởi tạo với `PrismaPg` adapter và connection pool.
+  4. Đăng ký `PrismaModule` là `@Global()` trong NestJS.
 - **Tiêu chí nghiệm thu**:
   - [ ] `npx prisma validate` trong `backend/` hợp lệ 100%.
   - [ ] `npx prisma generate` sinh mã Prisma Client TypeScript thành công.

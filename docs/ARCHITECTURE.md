@@ -243,12 +243,14 @@ erDiagram
     }
 ```
 
-### 3.2. Cấu hình Prisma Schema (`backend/prisma/schema.prisma`)
+### 3.2. Cấu hình Prisma Schema (`backend/prisma/schema.prisma`) & `prisma.config.ts`
+
+> [!NOTE]
+> Dự án áp dụng chuẩn **Prisma 7**: Thuộc tính `url` được tách khỏi `schema.prisma` và chuyển vào file cấu hình độc lập `backend/prisma.config.ts`. `PrismaClient` sử dụng Driver Adapter `@prisma/adapter-pg` cùng `pg` Pool.
 
 ```prisma
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 generator client {
