@@ -11,12 +11,16 @@ import {
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { Request, Response } from 'express';
+import { Role } from '@prisma/client';
 
 import { AuthService } from '@/modules/auth/auth.service';
 import { RegisterDto } from '@/modules/auth/dto/register.dto';
 import { LoginDto } from '@/modules/auth/dto/login.dto';
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
+import { RolesGuard } from '@/common/guards/roles.guard';
 import { CurrentUser } from '@/common/decorators/current-user.decorator';
+import { Roles } from '@/common/decorators/roles.decorator';
+import { UserResponse } from '@/modules/auth/interfaces';
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -118,6 +122,23 @@ export class AuthController {
   async getMe(@CurrentUser('id') userId: string) {
     const user = await this.authService.getCurrentUser(userId);
     return { user };
+  }
+
+  /**
+   * Protected owner endpoint for verifying administrative role access.
+   */
+  @Get('admin/check')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.OWNER)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Verify owner permissions' })
+  @ApiResponse({ status: 200, description: 'Owner access verified' })
+  @ApiResponse({ status: 403, description: 'Forbidden for non-owners' })
+  adminCheck(@CurrentUser() user: UserResponse) {
+    return {
+      message: 'Owner access verified',
+      user,
+    };
   }
 
   /**
