@@ -23,6 +23,8 @@ Package manager: npm workspaces unless the repository has an approved alternativ
 8. Never claim tests passed if they were not run.
 9. Update docs when architecture, APIs, or environment variables change.
 10. Stop and report blockers instead of silently inventing requirements.
+11. Create a markdown report in `docs/reports/milestone-<XX>/task-<X>.<Y>-<name>.md` upon completing each task.
+12. Ensure all verification results in reports are real execution logs from the workspace terminal.
 
 ## Engineering constraints
 

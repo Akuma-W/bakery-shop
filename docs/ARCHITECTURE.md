@@ -80,7 +80,7 @@ Theo yêu cầu trực tiếp từ khách hàng:
 
 ### 2.2. Cấu trúc Thư mục Chi tiết
 
-```
+```text
 bakery-shop/
 ├── backend/                         # Ứng dụng Backend NestJS (Độc lập 100%)
 │   ├── prisma/
