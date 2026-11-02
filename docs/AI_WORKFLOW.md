@@ -52,6 +52,7 @@ Mọi task code bắt buộc tuân theo quy trình 3 bước nghiệm thu nghiê
 - Use path alias `@/*` for imports instead of relative paths like `../../`.
 - Separate interfaces and types into a dedicated `interfaces/` directory inside each module.
 - Use definite assignment assertion `!` for DTO class properties (e.g. `email!: string;`).
+- End each file with exactly one trailing newline (1 blank line at file end, never multiple empty lines).
 
 ## Git rules
 

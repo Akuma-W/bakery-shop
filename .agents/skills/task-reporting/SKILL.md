@@ -43,4 +43,3 @@ Kỹ năng này hướng dẫn Agent tạo file báo cáo nghiệm thu kỹ thu�
 ### Bước 5: Bàn giao & Thông báo tới Người dùng
 1. Dẫn link markdown file báo cáo vừa tạo (ví dụ `[Báo cáo Task 2.1](file:///docs/reports/milestone-02/task-2.1-prisma-schema.md)`).
 2. Tóm tắt 1 câu về kết quả và nêu rõ bước kế tiếp cần xin ý kiến hoặc triển khai.
-

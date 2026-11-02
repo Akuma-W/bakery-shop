@@ -147,4 +147,3 @@ Ran all test suites.
 
 - **Rủi ro hiện tại**: Không có. Hệ thống xác thực và phân quyền RBAC hoạt động ổn định và sẵn sàng cho các module nghiệp vụ tiếp theo.
 - **Task tiếp theo cần thực hiện**: **Task 3.3: Quản lý Sổ Địa chỉ Nhận hàng (Address Book)** thuộc Milestone 3 theo `docs/IMPLEMENTATION_PLAN.md`.
-
