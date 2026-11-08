@@ -340,7 +340,7 @@ gantt
 - **Kế hoạch thực hiện**:
   1. Thẻ sản phẩm `ProductCard`: Ảnh bánh sắc nét, tên, giá bán, nhãn hết hàng nếu `stock = 0`, nút thêm nhanh vào giỏ.
 - **Tiêu chí nghiệm thu**:
-  - [ ] Trang chủ tải mượt mà dưới 1.5 giây.
+  - [x] Trang chủ tải mượt mà dưới 1.5 giây.
 - **Lệnh xác minh**:
 
   ```bash

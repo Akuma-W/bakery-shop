@@ -54,7 +54,7 @@ export function ShopHeader() {
   ];
 
   return (
-    <header className="w-full select-none">
+    <header className="sticky top-0 z-40 w-full select-none shadow-xs">
       {/* Top Notification & Utility Bar */}
       <div className="w-full bg-bakery-950 text-bakery-200 text-xs py-2 px-4 sm:px-6 lg:px-8 border-b border-bakery-900">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
@@ -95,8 +95,8 @@ export function ShopHeader() {
         </div>
       </div>
 
-      {/* Main Sticky Navigation Bar */}
-      <div className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-bakery-200 shadow-2xs">
+      {/* Main Navigation Bar */}
+      <div className="w-full bg-white/95 backdrop-blur-md border-b border-bakery-200 shadow-2xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
           {/* Left: Mobile Menu Trigger + Brand Logo */}
           <div className="flex items-center gap-3">
