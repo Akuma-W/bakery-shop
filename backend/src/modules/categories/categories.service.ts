@@ -104,10 +104,7 @@ export class CategoriesService {
   /**
    * Updates category details and validates slug uniqueness if modified.
    */
-  async updateCategory(
-    id: string,
-    dto: UpdateCategoryDto,
-  ): Promise<CategoryResponse> {
+  async updateCategory(id: string, dto: UpdateCategoryDto): Promise<CategoryResponse> {
     const existing = await this.getCategoryById(id);
 
     let updatedSlug = existing.slug;

@@ -258,7 +258,7 @@ gantt
   2. `POST`, `PUT`, `DELETE`: Yêu cầu quyền `Role.OWNER`.
   3. Tự động sinh `slug` từ tên danh mục tiếng Việt.
 - **Tiêu chí nghiệm thu**:
-  - [ ] Khách xem được danh mục; chỉ Owner mới có quyền tạo/sửa.
+  - [x] Khách xem được danh mục; chỉ Owner mới có quyền tạo/sửa.
 - **Lệnh xác minh**:
 
   ```bash
@@ -279,7 +279,7 @@ gantt
   3. `PATCH /api/v1/products/:id/stock`: Cập nhật số lượng tồn kho.
   4. `PATCH /api/v1/products/:id/toggle`: Nút gạt bật/tắt mở bán nhanh cho chủ tiệm.
 - **Tiêu chí nghiệm thu**:
-  - [ ] Lọc và tìm kiếm bánh trả về kết quả chính xác kèm thông tin phân trang.
+  - [x] Lọc và tìm kiếm bánh trả về kết quả chính xác kèm thông tin phân trang.
 - **Lệnh xác minh**:
 
   ```bash
@@ -298,7 +298,7 @@ gantt
   1. Giới hạn dung lượng tối đa 5MB, định dạng ảnh (`jpeg`, `png`, `webp`).
   2. Trả về URL ảnh công khai.
 - **Tiêu chí nghiệm thu**:
-  - [ ] File quá 5MB bị từ chối với mã lỗi 400.
+  - [x] File quá 5MB bị từ chối với mã lỗi 400.
 - **Lệnh xác minh**:
 
   ```bash

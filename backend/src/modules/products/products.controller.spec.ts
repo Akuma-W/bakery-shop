@@ -81,9 +81,7 @@ describe('ProductsController', () => {
 
       const result = await controller.getProductBySlug('banh-mi-sourdough');
 
-      expect(mockProductsService.getProductBySlug).toHaveBeenCalledWith(
-        'banh-mi-sourdough',
-      );
+      expect(mockProductsService.getProductBySlug).toHaveBeenCalledWith('banh-mi-sourdough');
       expect(result).toEqual({ product: mockProduct });
     });
   });
@@ -115,10 +113,7 @@ describe('ProductsController', () => {
 
       const result = await controller.updateProduct('prod-uuid-1', updateDto);
 
-      expect(mockProductsService.updateProduct).toHaveBeenCalledWith(
-        'prod-uuid-1',
-        updateDto,
-      );
+      expect(mockProductsService.updateProduct).toHaveBeenCalledWith('prod-uuid-1', updateDto);
       expect(result.product.name).toBe('Bánh Mì Mới');
     });
   });
@@ -132,10 +127,7 @@ describe('ProductsController', () => {
 
       const result = await controller.updateStock('prod-uuid-1', { stock: 100 });
 
-      expect(mockProductsService.updateStock).toHaveBeenCalledWith(
-        'prod-uuid-1',
-        100,
-      );
+      expect(mockProductsService.updateStock).toHaveBeenCalledWith('prod-uuid-1', 100);
       expect(result.product.stock).toBe(100);
     });
   });
@@ -162,9 +154,7 @@ describe('ProductsController', () => {
 
       const result = await controller.deleteProduct('prod-uuid-1');
 
-      expect(mockProductsService.deleteProduct).toHaveBeenCalledWith(
-        'prod-uuid-1',
-      );
+      expect(mockProductsService.deleteProduct).toHaveBeenCalledWith('prod-uuid-1');
       expect(result).toEqual({ message: 'Product deleted successfully' });
     });
   });

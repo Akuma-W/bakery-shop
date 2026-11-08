@@ -10,10 +10,7 @@ import { PrismaService } from '@/database/prisma.service';
 import { CreateProductDto } from '@/modules/products/dto/create-product.dto';
 import { FilterProductDto } from '@/modules/products/dto/filter-product.dto';
 import { UpdateProductDto } from '@/modules/products/dto/update-product.dto';
-import {
-  PaginatedProductsResponse,
-  ProductResponse,
-} from '@/modules/products/interfaces';
+import { PaginatedProductsResponse, ProductResponse } from '@/modules/products/interfaces';
 import { slugify } from '@/common/utils/slugify.util';
 
 @Injectable()
@@ -23,9 +20,7 @@ export class ProductsService {
   /**
    * Retrieves paginated products with flexible search, category, price, and stock filters.
    */
-  async getProducts(
-    filter: FilterProductDto = {},
-  ): Promise<PaginatedProductsResponse> {
+  async getProducts(filter: FilterProductDto = {}): Promise<PaginatedProductsResponse> {
     const page = filter.page && filter.page > 0 ? filter.page : 1;
     const limit = filter.limit && filter.limit > 0 ? filter.limit : 10;
     const skip = (page - 1) * limit;
@@ -182,9 +177,7 @@ export class ProductsService {
         description: dto.description,
         price: new Prisma.Decimal(dto.price),
         originalPrice:
-          dto.originalPrice !== undefined
-            ? new Prisma.Decimal(dto.originalPrice)
-            : null,
+          dto.originalPrice !== undefined ? new Prisma.Decimal(dto.originalPrice) : null,
         stock: dto.stock ?? 0,
         isActive: dto.isActive ?? true,
         isFeatured: dto.isFeatured ?? false,
@@ -209,10 +202,7 @@ export class ProductsService {
   /**
    * Updates product details, verifying category reference and slug uniqueness if modified.
    */
-  async updateProduct(
-    id: string,
-    dto: UpdateProductDto,
-  ): Promise<ProductResponse> {
+  async updateProduct(id: string, dto: UpdateProductDto): Promise<ProductResponse> {
     const existing = await this.getProductById(id);
 
     if (dto.categoryId && dto.categoryId !== existing.categoryId) {
@@ -260,9 +250,7 @@ export class ProductsService {
 
     if (dto.originalPrice !== undefined) {
       data.originalPrice =
-        dto.originalPrice !== null
-          ? new Prisma.Decimal(dto.originalPrice)
-          : null;
+        dto.originalPrice !== null ? new Prisma.Decimal(dto.originalPrice) : null;
     }
 
     if (dto.categoryId) {
@@ -370,12 +358,8 @@ export class ProductsService {
       stock: product.stock,
       isActive: product.isActive,
       isFeatured: product.isFeatured,
-      images: Array.isArray(product.images)
-        ? (product.images as string[])
-        : [],
-      allergens: Array.isArray(product.allergens)
-        ? (product.allergens as string[])
-        : [],
+      images: Array.isArray(product.images) ? (product.images as string[]) : [],
+      allergens: Array.isArray(product.allergens) ? (product.allergens as string[]) : [],
       prepTimeMinutes: product.prepTimeMinutes,
       createdAt: product.createdAt,
       updatedAt: product.updatedAt,

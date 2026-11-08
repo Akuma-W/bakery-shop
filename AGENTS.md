@@ -64,6 +64,7 @@ Mọi task code bắt buộc phải tuân thủ nghiêm ngặt chu trình 3 bư�
 
 2. **Bước 2: Viết Code & Yêu cầu Người dùng Kiểm tra (Post-Implementation Review)**:
    - Sau khi được duyệt, tiến hành viết code theo đúng kế hoạch.
+   - Chạy lệnh định dạng mã nguồn `npm run format` ở cuối tiến trình code.
    - Chạy các lệnh kiểm tra thực tế (typecheck, lint, test, build).
    - Lập báo cáo nghiệm thu task tại `docs/reports/milestone-<XX>/task-<X>.<Y>-<name>.md`.
    - Báo cáo kết quả và **yêu cầu người dùng kiểm tra, review code**.
@@ -84,4 +85,5 @@ Mọi task code bắt buộc phải tuân thủ nghiêm ngặt chu trình 3 bư�
 - **Import Alias `@/*`**: Luôn sử dụng path alias `@/*` (ví dụ `@/common/...`, `@/database/...`, `@/modules/...`) thay vì các đường dẫn tương đối như `../../`.
 - **Tách biệt Type/Interface**: Không định nghĩa trực tiếp các interface/type phức tạp bên trong service/controller. Bắt buộc tách thành thư mục riêng `interfaces/` bên trong mỗi module (ví dụ: `src/modules/<module-name>/interfaces/`).
 - **Definite Assignment trong DTO**: Khi khai báo thuộc tính trong DTO class, luôn dùng dấu `!` (ví dụ: `email!: string;`, `password!: string;`) để tương thích với TypeScript strict mode.
+- **Định dạng mã nguồn**: Luôn chạy lệnh `npm run format` (ở backend hoặc frontend tương ứng) ở cuối tiến trình code trước khi chạy kiểm tra và nghiệm thu.
 - **Định dạng kết thúc file**: Mỗi file mã nguồn hoặc tài liệu chỉ kết thúc bằng đúng 1 dòng trống (1 ký tự newline), tuyệt đối không để 2 dòng trống liên tiếp ở cuối file.

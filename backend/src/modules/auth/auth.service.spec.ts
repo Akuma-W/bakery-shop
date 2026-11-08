@@ -147,9 +147,7 @@ describe('AuthService', () => {
     it('should throw UnauthorizedException if refresh token is expired or invalid', async () => {
       mockJwtService.verifyAsync.mockRejectedValue(new Error('jwt expired'));
 
-      await expect(service.refreshTokens('invalid.token')).rejects.toThrow(
-        UnauthorizedException,
-      );
+      await expect(service.refreshTokens('invalid.token')).rejects.toThrow(UnauthorizedException);
     });
   });
 

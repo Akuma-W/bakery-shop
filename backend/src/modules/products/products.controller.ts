@@ -12,12 +12,7 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiResponse,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Role } from '@prisma/client';
 
 import { ProductsService } from '@/modules/products/products.service';
@@ -88,10 +83,7 @@ export class ProductsController {
   @ApiResponse({ status: 403, description: 'Forbidden: Owner role required' })
   @ApiResponse({ status: 404, description: 'Product or Category not found' })
   @ApiResponse({ status: 409, description: 'Product slug conflict' })
-  async updateProduct(
-    @Param('id') id: string,
-    @Body() dto: UpdateProductDto,
-  ) {
+  async updateProduct(@Param('id') id: string, @Body() dto: UpdateProductDto) {
     const product = await this.productsService.updateProduct(id, dto);
     return { product };
   }
@@ -108,10 +100,7 @@ export class ProductsController {
   @ApiResponse({ status: 401, description: 'Unauthorized' })
   @ApiResponse({ status: 403, description: 'Forbidden: Owner role required' })
   @ApiResponse({ status: 404, description: 'Product not found' })
-  async updateStock(
-    @Param('id') id: string,
-    @Body() dto: UpdateStockDto,
-  ) {
+  async updateStock(@Param('id') id: string, @Body() dto: UpdateStockDto) {
     const product = await this.productsService.updateStock(id, dto.stock);
     return { product };
   }

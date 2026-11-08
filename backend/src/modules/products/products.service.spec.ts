@@ -64,10 +64,7 @@ describe('ProductsService', () => {
     jest.clearAllMocks();
 
     const module: TestingModule = await Test.createTestingModule({
-      providers: [
-        ProductsService,
-        { provide: PrismaService, useValue: mockPrismaService },
-      ],
+      providers: [ProductsService, { provide: PrismaService, useValue: mockPrismaService }],
     }).compile();
 
     service = module.get<ProductsService>(ProductsService);
@@ -125,9 +122,7 @@ describe('ProductsService', () => {
     it('should throw NotFoundException if slug not found', async () => {
       mockPrismaService.product.findUnique.mockResolvedValue(null);
 
-      await expect(service.getProductBySlug('non-existent')).rejects.toThrow(
-        NotFoundException,
-      );
+      await expect(service.getProductBySlug('non-existent')).rejects.toThrow(NotFoundException);
     });
   });
 
@@ -161,18 +156,14 @@ describe('ProductsService', () => {
     it('should throw NotFoundException if category does not exist', async () => {
       mockPrismaService.category.findUnique.mockResolvedValue(null);
 
-      await expect(service.createProduct(createDto)).rejects.toThrow(
-        NotFoundException,
-      );
+      await expect(service.createProduct(createDto)).rejects.toThrow(NotFoundException);
     });
 
     it('should throw ConflictException if slug already exists', async () => {
       mockPrismaService.category.findUnique.mockResolvedValue(mockCategory);
       mockPrismaService.product.findUnique.mockResolvedValue(mockProduct);
 
-      await expect(service.createProduct(createDto)).rejects.toThrow(
-        ConflictException,
-      );
+      await expect(service.createProduct(createDto)).rejects.toThrow(ConflictException);
     });
   });
 
@@ -267,9 +258,7 @@ describe('ProductsService', () => {
       mockPrismaService.product.findUnique.mockResolvedValue(mockProduct);
       mockPrismaService.orderItem.count.mockResolvedValue(5);
 
-      await expect(service.deleteProduct('prod-uuid-1')).rejects.toThrow(
-        BadRequestException,
-      );
+      await expect(service.deleteProduct('prod-uuid-1')).rejects.toThrow(BadRequestException);
     });
   });
 });

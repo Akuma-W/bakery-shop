@@ -56,9 +56,7 @@ describe('RolesGuard', () => {
       const context = createMockContext(undefined);
 
       expect(() => guard.canActivate(context)).toThrow(ForbiddenException);
-      expect(() => guard.canActivate(context)).toThrow(
-        'Access denied: insufficient permissions',
-      );
+      expect(() => guard.canActivate(context)).toThrow('Access denied: insufficient permissions');
     });
 
     it('should throw ForbiddenException when user has no role property', () => {
@@ -67,9 +65,7 @@ describe('RolesGuard', () => {
       const context = createMockContext({ id: 'user-id-without-role' });
 
       expect(() => guard.canActivate(context)).toThrow(ForbiddenException);
-      expect(() => guard.canActivate(context)).toThrow(
-        'Access denied: insufficient permissions',
-      );
+      expect(() => guard.canActivate(context)).toThrow('Access denied: insufficient permissions');
     });
 
     it('should throw ForbiddenException when user role does not match required role', () => {
@@ -93,9 +89,7 @@ describe('RolesGuard', () => {
     });
 
     it('should grant access when user matches one of multiple accepted roles', () => {
-      jest
-        .spyOn(reflector, 'getAllAndOverride')
-        .mockReturnValue([Role.OWNER, Role.CUSTOMER]);
+      jest.spyOn(reflector, 'getAllAndOverride').mockReturnValue([Role.OWNER, Role.CUSTOMER]);
 
       const context = createMockContext({ id: 'cust-1', role: Role.CUSTOMER });
       const result = guard.canActivate(context);

@@ -11,13 +11,7 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiQuery,
-  ApiResponse,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Role } from '@prisma/client';
 
 import { CategoriesService } from '@/modules/categories/categories.service';
@@ -44,9 +38,7 @@ export class CategoriesController {
     description: 'Whether to include inactive categories (admin use)',
   })
   @ApiResponse({ status: 200, description: 'List of categories' })
-  async getCategories(
-    @Query('includeInactive') includeInactive?: string,
-  ) {
+  async getCategories(@Query('includeInactive') includeInactive?: string) {
     const shouldIncludeInactive = includeInactive === 'true';
     const categories = await this.categoriesService.getCategories(shouldIncludeInactive);
     return { categories };
@@ -95,10 +87,7 @@ export class CategoriesController {
   @ApiResponse({ status: 403, description: 'Forbidden: Owner role required' })
   @ApiResponse({ status: 404, description: 'Category not found' })
   @ApiResponse({ status: 409, description: 'Category slug collision' })
-  async updateCategory(
-    @Param('id') id: string,
-    @Body() dto: UpdateCategoryDto,
-  ) {
+  async updateCategory(@Param('id') id: string, @Body() dto: UpdateCategoryDto) {
     const category = await this.categoriesService.updateCategory(id, dto);
     return { category };
   }
