@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
-import * as request from 'supertest';
+import request from 'supertest';
 import { AppModule } from './../src/app.module';
 
 describe('AppController (e2e)', () => {
@@ -23,7 +23,7 @@ describe('AppController (e2e)', () => {
   it('/api/v1/health (GET)', () => {
     return request(app.getHttpServer())
       .get('/api/v1/health')
-      .expect((res) => {
+      .expect((res: request.Response) => {
         expect([200, 503]).toContain(res.status);
         expect(res.body).toHaveProperty('status');
         expect(res.body).toHaveProperty('services');

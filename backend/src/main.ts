@@ -53,14 +53,14 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api/docs', app, document, {
+  SwaggerModule.setup('api/v1/docs', app, document, {
     customSiteTitle: 'Bakery Web API Docs',
   });
 
   const port = process.env.PORT || 3001;
   await app.listen(port);
   logger.log(`Bakery API running on: http://localhost:${port}/api/v1`);
-  logger.log(`Swagger documentation available at: http://localhost:${port}/api/docs`);
+  logger.log(`Swagger documentation available at: http://localhost:${port}/api/v1/docs`);
 }
 
 bootstrap();
