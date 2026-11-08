@@ -1,16 +1,65 @@
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #fdfbf7;
-  --foreground: #2d1f16;
-}
+@layer base {
+  :root {
+    --background: #fdfbf7;
+    --foreground: #2d1f16;
+    --card: #ffffff;
+    --card-foreground: #2d1f16;
+    --popover: #ffffff;
+    --popover-foreground: #2d1f16;
+    --primary: #b89462;
+    --primary-foreground: #ffffff;
+    --secondary: #f8f4eb;
+    --secondary-foreground: #533d2e;
+    --muted: #f8f4eb;
+    --muted-foreground: #7c5c3c;
+    --accent: #eee5d3;
+    --accent-foreground: #2d1f16;
+    --destructive: #dc2626;
+    --destructive-foreground: #ffffff;
+    --border: #e1d0b3;
+    --input: #e1d0b3;
+    --ring: #b89462;
+    --radius: 0.75rem;
+  }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+  .dark {
+    --background: #2d1f16;
+    --foreground: #fdfbf7;
+    --card: #3a281e;
+    --card-foreground: #fdfbf7;
+    --popover: #3a281e;
+    --popover-foreground: #fdfbf7;
+    --primary: #b89462;
+    --primary-foreground: #2d1f16;
+    --secondary: #533d2e;
+    --secondary-foreground: #fdfbf7;
+    --muted: #533d2e;
+    --muted-foreground: #d1b48b;
+    --accent: #644a34;
+    --accent-foreground: #fdfbf7;
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+    --border: #644a34;
+    --input: #644a34;
+    --ring: #b89462;
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family:
+      -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
 }

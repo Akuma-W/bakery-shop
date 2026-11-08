@@ -1,0 +1,103 @@
+{
+  "site": {
+    "tagline": "Tiệm Bánh Tươi Thủ Công & Đồ Uống",
+    "address": "123 Đường Bánh Mì, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh",
+    "hours": "07:00 - 21:00 (Thứ 2 - Chủ Nhật)"
+  },
+  "topbar": {
+    "announcement": "Miễn phí giao hàng cho đơn từ 200.000₫",
+    "hotline": "Hotline",
+    "hours": "Giờ mở cửa",
+    "language": "Ngôn ngữ"
+  },
+  "nav": {
+    "home": "Trang chủ",
+    "menu": "Thực đơn bánh",
+    "featured": "Bánh bán chạy",
+    "promotions": "Khuyến mãi",
+    "about": "Về chúng tôi",
+    "search_placeholder": "Tìm kiếm bánh mì, bánh kem, tart...",
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "account": "Tài khoản",
+    "cart": "Giỏ hàng"
+  },
+  "hero": {
+    "badge": "Tiệm Bánh Tươi Mới Mỗi Ngày",
+    "title_line1": "Hương vị châu Âu",
+    "title_line2": "nướng tươi mỗi sớm",
+    "description": "Chào mừng bạn đến với Windie Cake — nơi từng ổ bánh mì Sourdough, chiếc Croissant 27 lớp giòn rụm và bánh kem tươi bơ Pháp được nhào nặn thủ công tỉ mỉ bằng tình yêu làm bánh.",
+    "cta_explore": "Khám phá thực đơn",
+    "cta_about": "Về Windie Cake",
+    "badge1_title": "Bơ Pháp AOP",
+    "badge1_desc": "Nguyên liệu cao cấp",
+    "badge2_title": "Lên men 36h",
+    "badge2_desc": "Men tự nhiên dễ tiêu",
+    "badge3_title": "Không phụ gia",
+    "badge3_desc": "100% tự nhiên tươi ngon",
+    "best_seller_tag": "Bán Chạy Nhất",
+    "best_seller_name": "Bánh Sừng Bò Bơ Pháp",
+    "quick_add": "Thêm nhanh vào giỏ"
+  },
+  "categories_section": {
+    "badge": "Danh Mục Nổi Bật",
+    "title": "Khám phá hương vị tiệm bánh Windie",
+    "description": "Từ bánh mì giòn tan, bánh ngọt nhiều tầng đến bánh sinh nhật trang trí tinh xảo.",
+    "cat_bread": "Bánh Mì Artisan",
+    "cat_pastry": "Bánh Ngọt & Pastry",
+    "cat_cake": "Bánh Kem & Sinh Nhật",
+    "cat_beverage": "Đồ Uống & Trà Tươi",
+    "items_suffix": "{count} món"
+  },
+  "cart": {
+    "title": "Giỏ hàng của bạn",
+    "empty_title": "Giỏ hàng đang trống",
+    "empty_desc": "Hãy khám phá các món bánh thơm ngon mới ra lò hôm nay!",
+    "continue_shopping": "Khám phá thực đơn",
+    "subtotal": "Tạm tính",
+    "shipping": "Phí giao hàng",
+    "shipping_free": "Miễn phí",
+    "shipping_calculated": "Tính khi thanh toán",
+    "total": "Tổng tiền",
+    "checkout": "Tiến hành thanh toán",
+    "view_cart": "Xem giỏ hàng",
+    "free_shipping_gap": "Mua thêm {gap} để được miễn phí giao hàng",
+    "free_shipping_eligible": "Đơn hàng của bạn đã đủ điều kiện Miễn phí giao hàng!",
+    "remove_item": "Xóa món",
+    "items_count": "{count} món"
+  },
+  "footer": {
+    "about_title": "Về Windie Cake",
+    "about_desc": "Tiệm bánh thủ công mang hương vị châu Âu tinh tế kết hợp nguyên liệu tự nhiên hảo hạng. Mỗi chiếc bánh đều được nướng tươi mới mỗi sáng để gửi trao vị ngọt trọn vẹn nhất.",
+    "menu_title": "Danh mục bánh",
+    "category_bread": "Bánh Mì Artisan (Sourdough)",
+    "category_pastry": "Bánh Ngọt & Pastry",
+    "category_cake": "Bánh Kem & Sinh Nhật",
+    "category_beverage": "Đồ Uống & Trà Tươi",
+    "featured_products": "Bánh bán chạy hôm nay",
+    "support_title": "Hỗ trợ khách hàng",
+    "policy_shipping": "Chính sách giao hàng",
+    "policy_refund": "Đổi trả & hoàn tiền",
+    "policy_privacy": "Chính sách bảo mật",
+    "policy_terms": "Điều khoản dịch vụ",
+    "baker_story": "Câu Chuyện Thợ Bánh Windie",
+    "contact_title": "Liên hệ với tiệm",
+    "newsletter_title": "Nhận ưu đãi ngọt ngào",
+    "newsletter_desc": "Đăng ký email để nhận mã giảm giá 10% cho đơn hàng đầu tiên.",
+    "newsletter_placeholder": "Nhập email của bạn...",
+    "newsletter_button": "Đăng ký",
+    "newsletter_success": "Cảm ơn bạn! Mã ưu đãi 10% đã được gửi tới email của bạn.",
+    "rights_reserved": "Toàn bộ bản quyền thuộc về Windie Cake.",
+    "baked_with_love": "Nướng tươi mới bằng cả trái tim",
+    "payment_methods": "Phương thức thanh toán",
+    "cod_payment": "Tiền mặt (COD)"
+  },
+  "common": {
+    "currency_symbol": "₫",
+    "in_stock": "Còn hàng",
+    "out_of_stock": "Hết bánh hôm nay",
+    "add_to_cart": "Thêm vào giỏ",
+    "loading": "Đang tải...",
+    "error_occurred": "Đã xảy ra lỗi, vui lòng thử lại sau"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "site": {
+    "tagline": "Artisan Bakery & Fresh Beverages",
+    "address": "123 Bakery Street, Ben Nghe Ward, District 1, Ho Chi Minh City",
+    "hours": "07:00 - 21:00 (Mon - Sun)"
+  },
+  "topbar": {
+    "announcement": "Free shipping on orders over 200,000₫",
+    "hotline": "Hotline",
+    "hours": "Opening Hours",
+    "language": "Language"
+  },
+  "nav": {
+    "home": "Home",
+    "menu": "Pastry Menu",
+    "featured": "Best Sellers",
+    "promotions": "Promotions",
+    "about": "About Us",
+    "search_placeholder": "Search pastries, cakes, tarts...",
+    "login": "Sign In",
+    "register": "Sign Up",
+    "account": "Account",
+    "cart": "Cart"
+  },
+  "hero": {
+    "badge": "Fresh Daily Artisanal Bakery",
+    "title_line1": "European Flavors",
+    "title_line2": "baked fresh every morning",
+    "description": "Welcome to Windie Cake — where crusty Sourdough, flaky 27-layer Croissants, and rich French butter cakes are crafted by hand with pure passion.",
+    "cta_explore": "Explore Menu",
+    "cta_about": "About Windie Cake",
+    "badge1_title": "AOP French Butter",
+    "badge1_desc": "Premium Ingredients",
+    "badge2_title": "36h Fermentation",
+    "badge2_desc": "Natural & Wholesome",
+    "badge3_title": "No Additives",
+    "badge3_desc": "100% Pure & Fresh",
+    "best_seller_tag": "Best Seller",
+    "best_seller_name": "Classic French Croissant",
+    "quick_add": "Quick add to cart"
+  },
+  "categories_section": {
+    "badge": "Featured Categories",
+    "title": "Discover the Flavors of Windie Cake",
+    "description": "From crusty artisanal breads and layered pastries to exquisitely decorated celebration cakes.",
+    "cat_bread": "Artisan Breads",
+    "cat_pastry": "Pastries & Croissants",
+    "cat_cake": "Celebration Cakes",
+    "cat_beverage": "Fresh Beverages",
+    "items_suffix": "{count} items"
+  },
+  "cart": {
+    "title": "Your Shopping Cart",
+    "empty_title": "Your cart is empty",
+    "empty_desc": "Explore our freshly baked artisanal pastries today!",
+    "continue_shopping": "Explore Menu",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping Fee",
+    "shipping_free": "Free",
+    "shipping_calculated": "Calculated at checkout",
+    "total": "Total",
+    "checkout": "Proceed to Checkout",
+    "view_cart": "View Full Cart",
+    "free_shipping_gap": "Add {gap} more to get free shipping",
+    "free_shipping_eligible": "Congratulations! Your order qualifies for Free Shipping!",
+    "remove_item": "Remove item",
+    "items_count": "{count} items"
+  },
+  "footer": {
+    "about_title": "About Windie Cake",
+    "about_desc": "Artisanal bakery crafting European-style pastries with premium natural ingredients. Baked fresh every morning with pure passion.",
+    "menu_title": "Pastry Categories",
+    "category_bread": "Artisan Breads (Sourdough)",
+    "category_pastry": "Pastries & Croissants",
+    "category_cake": "Celebration Cakes",
+    "category_beverage": "Fresh Beverages",
+    "featured_products": "Featured Products",
+    "support_title": "Customer Support",
+    "policy_shipping": "Shipping Policy",
+    "policy_refund": "Returns & Refunds",
+    "policy_privacy": "Privacy Policy",
+    "policy_terms": "Terms of Service",
+    "baker_story": "Our Baker's Story",
+    "contact_title": "Contact Us",
+    "newsletter_title": "Sweet Special Offers",
+    "newsletter_desc": "Subscribe to receive a 10% discount code for your first bakery order.",
+    "newsletter_placeholder": "Enter your email...",
+    "newsletter_button": "Subscribe",
+    "newsletter_success": "Thank you! Your 10% discount code has been sent to your email.",
+    "rights_reserved": "All rights reserved by Windie Cake.",
+    "baked_with_love": "Baked fresh with pure passion",
+    "payment_methods": "Payment Methods",
+    "cod_payment": "Cash (COD)"
+  },
+  "common": {
+    "currency_symbol": "₫",
+    "in_stock": "In Stock",
+    "out_of_stock": "Sold Out Today",
+    "add_to_cart": "Add to Cart",
+    "loading": "Loading...",
+    "error_occurred": "An error occurred, please try again later"
+  }
+}

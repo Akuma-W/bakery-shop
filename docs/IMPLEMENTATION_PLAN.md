@@ -321,7 +321,7 @@ gantt
   1. Header gồm: Logo, Thanh tìm kiếm, Menu danh mục bánh, Chuông thông báo, Nút giỏ hàng, Nút tài khoản.
   2. Mini-cart Drawer trượt ngang mượt mà khi khách bấm giỏ hàng.
 - **Tiêu chí nghiệm thu**:
-  - [ ] Hiển thị đẹp mắt trên cả điện thoại (375px) và máy tính (1440px).
+  - [x] Hiển thị đẹp mắt trên cả điện thoại (375px) và máy tính (1440px).
 - **Lệnh xác minh**:
 
   ```bash
